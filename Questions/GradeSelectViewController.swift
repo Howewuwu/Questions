@@ -8,22 +8,55 @@
 import UIKit
 
 class GradeSelectViewController: UIViewController {
-
+    
+    var grade : Grade?
+    
+    @IBOutlet var gradeSelectButtonsOuelet: [UIButton]!
+    
+    
+    
+    // MARK: - viewDidLoad Section
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        
+    }
+    // MARK: - IBACtion Section
+    
+    
+    @IBSegueAction func addGrade(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> SubjectsSelectViewController? {
+        if let buttonGrade = segueIdentifier?.description {
+            switch buttonGrade {
+            case "one" :
+                grade = .one
+            case "two" :
+                grade = .two
+            case "three" :
+                grade = .three
+            case "four" :
+                grade = .four
+            case "five" :
+                grade = .five
+            case "six" :
+                grade = .six
+            default :
+                break
+            }
+            print(grade!.rawValue)
+            
+        }
+        
+        let controller =  SubjectsSelectViewController(coder: coder)
+        controller?.grade = self.grade
+        return controller
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
+    // MARK: - function Section
+    
+    
+    
 }
